@@ -1,0 +1,113 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "ziweidoushu",
+    "nameCn": "Ziwei Doushu",
+    "repoName": "ziwei-doushu-deploy-guide",
+    "oneLiner": "开源的紫微斗数排盘引擎 + Web Demo",
+    "officialRepo": "https://github.com/Renhuai123/ziwei-doushu",
+    "officialDocs": "https://github.com/Renhuai123/ziwei-doushu#三快速开始",
+    "stars": "8.1k",
+    "license": "MIT",
+    "highlights": [
+      "排盘引擎：十二宫、四化、十二神煞、运限（含童限）、流派配置",
+      "数据资产：51.8 万命盘样本；67.5 万命盘 × 13 维解读数据集（v4.0，按年份下载）",
+      "古籍与原文：倪海厦《天纪·紫微斗数》14 讲 1848 条，可回放",
+      "工程化：TypeScript + Next.js，自带回归测试（`npm test`）与 CI"
+    ],
+    "mcpSupport": "这个项目不含 MCP；它是排盘引擎 + Next.js 站点。本仓库的 MCP 只提供安装步骤、端口与常见坑。",
+    "webuiUrl": "http://127.0.0.1:3000",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-26",
+    "verification": [
+      [
+        "Windows `npm install` 成功（183 个包，18 秒）",
+        "已验证 2026-10-26"
+      ],
+      [
+        "`npm test` 排盘回归全部通过",
+        "已验证 2026-10-26"
+      ],
+      [
+        "`npm run dev` 后 127.0.0.1:3000 返回 HTTP 200（71.9 KB）",
+        "已验证 2026-10-26"
+      ],
+      [
+        "MCP 服务握手与工具列表（initialize / tools/list）",
+        "已验证 2026-10-26"
+      ],
+      [
+        "非目标宿主调用被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-26"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "node"
+      ],
+      "steps": [
+        "git clone https://github.com/Renhuai123/ziwei-doushu",
+        "cd ziwei-doushu",
+        "npm install",
+        "cp .env.example .env.local 2>/dev/null || true",
+        "nohup npm run dev > dev.log 2>&1 &",
+        "echo \"开发服务器已在后台启动，日志：dev.log\""
+      ],
+      "stepsPs": [
+        "git clone https://github.com/Renhuai123/ziwei-doushu",
+        "Set-Location ziwei-doushu",
+        "npm install",
+        "if (Test-Path .env.example) { Copy-Item .env.example .env.local -Force }",
+        "Start-Process -FilePath npm.cmd -ArgumentList 'run','dev' -WindowStyle Hidden",
+        "Write-Host '开发服务器已在后台启动，首次编译需要十几秒'"
+      ],
+      "source": "https://github.com/Renhuai123/ziwei-doushu#三快速开始"
+    },
+    "pitfalls": [
+      "端口 3000 被占用：用 `npm run dev -- -p 3001` 换端口，或先结束占用进程",
+      "首次打开很慢：Next 开发模式要现场编译，等十几秒再刷新",
+      "改了 `.env.local` 不生效：重启 `npm run dev`",
+      "AI 解读不能用：仓库没有实现 `/api/*`，需要自己写接口并配模型 Key",
+      "数据集下载慢：Release 里按年份取 `year-*.jsonl.zst`，不要一次拉全量 tar",
+      "生产部署不要用 dev 模式：先 `npm run build` 再 `npm run start`，并用 pm2 / systemd 托管"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/ziwei-doushu-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/ziwei-doushu-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "紫微斗数 排盘",
+    "ziwei-doushu",
+    "紫微斗数 开源",
+    "紫微斗数 源码",
+    "四化 排盘",
+    "紫微斗数 数据集",
+    "倪海厦 天纪",
+    "Next.js 排盘",
+    "紫微斗数 本地部署",
+    "ziwei doushu deploy guide"
+  ],
+  "topics": [
+    "zi-wei-dou-shu",
+    "chinese-astrology",
+    "divination",
+    "nextjs",
+    "typescript",
+    "open-source"
+  ]
+}

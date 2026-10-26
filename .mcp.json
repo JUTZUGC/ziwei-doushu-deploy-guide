@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ziweidoushu-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
